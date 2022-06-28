@@ -97,4 +97,14 @@ variable "template_vm" {
   default = "template01"
 }
 
+variable "bastion_service" {
+  type    = string
+  default = "bastion_service"
+}
+
+variable "bastion_ip" {
+  type    = string
+  default = "bastion-ip"
+}
+
 

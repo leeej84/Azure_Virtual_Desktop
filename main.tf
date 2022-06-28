@@ -219,3 +219,34 @@ resource "azuread_group" "avd_group" {
   display_name     = var.avd_groupName
   security_enabled = true
 }
+
+#Deploy Bastion
+resource "azurerm_subnet" "AzureBastionSubnet" {
+  provider             = azurerm.defaultsub
+  name                 = "AzureBastionSubnet"
+  resource_group_name  = azurerm_resource_group.rg_avdshared.name
+  virtual_network_name = azurerm_virtual_network.vnet_avd.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
+
+resource "azurerm_public_ip" "vnet_bastion_ip" {
+  provider            = azurerm.defaultsub
+  name                = var.bastion_ip
+  location            = var.default_location
+  resource_group_name = azurerm_resource_group.rg_avdshared.name
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
+
+resource "azurerm_bastion_host" "bastion_service" {
+  provider            = azurerm.defaultsub
+  name                = var.bastion_service
+  location            = var.default_location
+  resource_group_name = azurerm_resource_group.rg_avdshared.name
+
+  ip_configuration {
+    name                 = "configuration"
+    subnet_id            = azurerm_subnet.AzureBastionSubnet.id
+    public_ip_address_id = azurerm_public_ip.vnet_bastion_ip.id
+  }
+}
