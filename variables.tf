@@ -107,4 +107,35 @@ variable "bastion_ip" {
   default = "bastion-ip"
 }
 
+#VM common settings
+variable "VMCommonSettings" {
+  type = map(any)
+  default = {
+    localadminuser = "adminuser"
+    localpassword  = "P@ssword100!"
+  }
+}
 
+#Cloud Connecter Variables
+variable "CloudConnectors" {
+  type = map(any)
+  default = {
+    ccName       = "ctxcc1"
+    vmSize       = "Standard_F2"
+    APIID        = "8e38a70b-d914-46eb-aa5e-625113046312"
+    APIKey       = "wO61crnBsuOevXFw4DMzyQ=="
+    CustomerName = "leeejeffries"
+  }
+}
+
+#Domain Join Variables
+variable "DomainJoin" {
+  type = map(any)
+  default = {
+    username     = "administrator@ctxlab.local"
+    password     = "P@ssw0rd"
+    domain       = "ctxlab.local"
+    APIKey       = "wO61crnBsuOevXFw4DMzyQ=="
+    CustomerName = "leeejeffries"
+  }
+}

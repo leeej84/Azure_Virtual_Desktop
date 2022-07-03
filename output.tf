@@ -32,3 +32,8 @@ output "azurerm_virtual_desktop_workspace" {
   description = "Name of the Azure Virtual Desktop workspace"
   value       = azurerm_virtual_desktop_workspace.avd_workspace
 }
+
+output "azurerm_public_ip" {
+  description = "Details of VPN Public IP"
+  value       = azurerm_public_ip.labvpn_ip
+}

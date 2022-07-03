@@ -7,3 +7,4 @@ terraform.exe
 *.lock.hcl
 windows_amd64
 .teffaform
+vpn.tf

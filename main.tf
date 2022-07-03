@@ -63,7 +63,7 @@ resource "azurerm_virtual_network" "vnet_avd" {
   tags                = var.default_tags
   resource_group_name = azurerm_resource_group.rg_avdshared.name
   address_space       = ["10.0.0.0/16"]
-  dns_servers         = ["8.8.8.8", "8.8.4.4"]
+  dns_servers         = ["192.168.1.10", "8.8.8.8"]
 }
 
 #Subnet within VNET
@@ -73,6 +73,15 @@ resource "azurerm_subnet" "subnet1" {
   resource_group_name  = azurerm_resource_group.rg_avdshared.name
   virtual_network_name = azurerm_virtual_network.vnet_avd.name
   address_prefixes     = ["10.0.1.0/24"]
+}
+
+#Subnet within VNET
+resource "azurerm_subnet" "GatewaySubnet" {
+  provider             = azurerm.defaultsub
+  name                 = "GatewaySubnet"
+  resource_group_name  = azurerm_resource_group.rg_avdshared.name
+  virtual_network_name = azurerm_virtual_network.vnet_avd.name
+  address_prefixes     = ["10.0.10.0/24"]
 }
 
 #Deploy AVD Workspace and Host Pools##
