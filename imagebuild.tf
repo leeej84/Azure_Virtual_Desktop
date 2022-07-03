@@ -18,6 +18,7 @@ resource "azurerm_shared_image" "sig" {
   location            = var.default_location
   tags                = var.default_tags
   os_type             = "Windows"
+  hyper_v_generation  = "V2"
 
   identifier {
     publisher = "MicrosoftWindowsDesktop"

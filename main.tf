@@ -151,7 +151,7 @@ resource "azurerm_log_analytics_workspace" "la_avd" {
   sku                 = "PerGB2018"
 }
 
-# diagnostic settings for workspac
+# diagnostic settings for workspace
 resource "azurerm_monitor_diagnostic_setting" "diag_workspace" {
   provider                   = azurerm.defaultsub
   name                       = "WorkspaceDiagnostics"
