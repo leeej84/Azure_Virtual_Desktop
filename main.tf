@@ -243,6 +243,7 @@ resource "azurerm_public_ip" "vnet_bastion_ip" {
   name                = var.bastion_ip
   location            = var.default_location
   resource_group_name = azurerm_resource_group.rg_avdshared.name
+  tags                = var.default_tags
   allocation_method   = "Static"
   sku                 = "Standard"
 }
@@ -251,6 +252,7 @@ resource "azurerm_bastion_host" "bastion_service" {
   provider            = azurerm.defaultsub
   name                = var.bastion_service
   location            = var.default_location
+  tags                = var.default_tags
   resource_group_name = azurerm_resource_group.rg_avdshared.name
 
   ip_configuration {

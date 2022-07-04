@@ -2,6 +2,7 @@ resource "azurerm_network_interface" "CC1-NIC" {
   name                = "${var.CloudConnectors.ccName}-nic"
   location            = var.default_location
   resource_group_name = azurerm_resource_group.rg_avdshared.name
+  tags                = var.default_tags
 
   ip_configuration {
     name                          = "internal"
@@ -15,6 +16,7 @@ resource "azurerm_windows_virtual_machine" "CC1" {
   computer_name       = var.CloudConnectors.ccName
   location            = var.default_location
   resource_group_name = azurerm_resource_group.rg_avdshared.name
+  tags                = var.default_tags
   size                = var.CloudConnectors.vmSize
   admin_username      = var.VMCommonSettings.localadminuser
   admin_password      = var.VMCommonSettings.localpassword
