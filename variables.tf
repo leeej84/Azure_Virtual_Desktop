@@ -122,8 +122,8 @@ variable "CloudConnectors" {
   default = {
     ccName       = "ctxcc1"
     vmSize       = "Standard_F2"
-    APIID        = "8e38a70b-d914-46eb-aa5e-625113046312"
-    APIKey       = "wO61crnBsuOevXFw4DMzyQ=="
+    APIID        = "Your Citrix Cloud API ID"
+    APIKey       = "Your Citrix Cloud API Key"
     CustomerName = "leeejeffries"
   }
 }
@@ -133,9 +133,7 @@ variable "DomainJoin" {
   type = map(any)
   default = {
     username     = "administrator@ctxlab.local"
-    password     = "P@ssw0rd"
-    domain       = "ctxlab.local"
-    APIKey       = "wO61crnBsuOevXFw4DMzyQ=="
-    CustomerName = "leeejeffries"
+    password     = "Your Password"
+    domain       = "Your Domain"
   }
 }
